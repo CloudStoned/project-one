@@ -1,281 +1,254 @@
-## **Weeks 1-2: Frontend First (UI Ready for AI Integration)**
+## 🔹 Week 1 — Frontend Foundation (shadcn)
+
+### **Day 1 – Project Setup**
+
+- Create Next.js project (App Router)
+- Install Tailwind CSS
+- Initialize shadcn/ui
+- Run app and verify setup
 
 ---
 
-### **Day 1: Project Initialization**
+### **Day 2 – App Layout**
 
-- Create Next.js project with TypeScript.
-- Install and configure Tailwind CSS.
-- Install Shadcn UI components.
-- Setup folder structure: `pages/`, `components/`, `lib/`.
-- Run development server to ensure everything works.
-- **Suggestion:** Organize VS Code workspace, install Tailwind and Shadcn extensions.
+- Create base layout (Header + main container)
+- Set spacing and max width
+- Add simple navigation links
 
 ---
 
-### **Day 2: Layout Skeleton**
+### **Day 3 – Shared UI Components**
 
-- Create dashboard page.
-- Add header with project name “AI Boilerplate Generator.”
-- Create containers for input form and code display.
-- Implement responsive layout with Tailwind (flex/grid).
-- **Suggestion:** Plan layout for both mobile and desktop views; consider card-based structure for input/output areas.
+- Create app-level wrappers using shadcn:
 
----
+  - Button
+  - Card
+  - Input
+  - Textarea
+  - Select
 
-### **Day 3: Input Form**
+- Create:
 
-- Add input area for instructions (textarea or form).
-- Add submit/generate button.
-- Setup basic input state management.
-- Implement simple validation (cannot submit empty input).
-- **Suggestion:** Use a card or panel for the form to visually separate it from code output.
+  - FeatureCard
+  - ResultPanel
+  - LoadingSkeleton
 
 ---
 
-### **Day 4: Code Display Component**
+### **Day 4 – Image Analysis UI**
 
-- Add scrollable area to display generated code.
-- Include basic styling to distinguish code from other content.
-- Plan for syntax highlighting and long-code support.
-- **Suggestion:** Test with dummy content to ensure scrolling and layout behave correctly.
-
----
-
-### **Day 5: Basic Interaction**
-
-- Connect submit button to dummy function returning sample code.
-- Display returned code in the code display area.
-- Test multiple instructions to ensure UI updates properly.
-- Add basic error handling for empty submissions.
-- **Suggestion:** Check layout consistency when code output grows large.
+- Create `/image-analysis` page
+- Image upload with preview
+- Optional prompt input
+- Submit button (disabled logic)
+- Static result placeholder
 
 ---
 
-### **Day 6: Styling & Polish Part 1**
+### **Day 5 – Text Summary UI**
 
-- Use Shadcn cards for form and code output.
-- Add spacing, padding, and rounded corners.
-- Style buttons with hover and active states.
-- **Suggestion:** Prioritize mobile-first design and keep consistent spacing between elements.
-
----
-
-### **Day 7: Styling & Polish Part 2**
-
-- Apply background colors to cards.
-- Adjust typography (font sizes, weights).
-- Plan for syntax highlighting colors and themes.
-- Add loading skeletons for future API calls.
-- **Suggestion:** Preview UI on multiple screen sizes to verify responsiveness.
+- Create `/text-summary` page
+- Textarea input
+- Summary length select
+- Submit button
+- Static result placeholder
 
 ---
 
-### **Day 8: Code Type Selection**
+### **Day 6 – UI Polish**
 
-- Add dropdown to select code type (Backend, Frontend, Utility).
-- Update UI to reflect different code types in output area.
-- Style dropdown for visibility and ease of use.
-- **Suggestion:** Keep the selection prominent; consider defaulting to the most common code type.
-
----
-
-### **Day 9: Local State Management**
-
-- Store last generated code in frontend state.
-- Allow clearing previous code.
-- Optional: Save last generated code in `localStorage` for persistence.
-- **Suggestion:** Consider how users may want to recall multiple previous codes.
+- Add loading skeletons
+- Add error alert component
+- Improve spacing and UX
+- Keyboard / basic accessibility check
 
 ---
 
-### **Day 10: Copy to Clipboard**
+### **Day 7 – Frontend Cleanup**
 
-- Add “Copy” button to code display.
-- Show confirmation message when code is copied.
-- Style button and feedback message.
-- **Suggestion:** Keep button visible at all times; consider small icon for minimal UI impact.
-
----
-
-### **Day 11: Loading & Feedback**
-
-- Add loading spinner or skeleton during code generation.
-- Disable submit button while waiting.
-- Add error message for invalid input.
-- **Suggestion:** Make feedback noticeable but unobtrusive to maintain UX flow.
+- Refactor duplicated UI logic
+- Ensure consistent shadcn usage
+- Prepare frontend for API wiring
 
 ---
 
-### **Day 12: UI Refinements**
+## 🔹 Week 2 — Backend + Wiring (No AI)
 
-- Add shadows to cards for depth.
-- Add smooth transitions for hover and loading states.
-- Adjust spacing and alignment for aesthetic balance.
-- Test responsive layout again.
-- **Suggestion:** Compare layout with reference dashboards for inspiration.
+### **Day 8 – Backend Setup**
 
----
-
-### **Day 13: Prep for Backend Integration**
-
-- Replace dummy code generation function with async placeholder for API.
-- Ensure loading, input, and output states are ready for real API responses.
-- Test UI with mocked API responses.
-- **Suggestion:** Prepare clear state flow so backend integration is seamless.
+- Initialize FastAPI project
+- Enable CORS
+- Add health check endpoint
 
 ---
 
-### **Day 14: Final Frontend Polish**
+### **Day 9 – Image Analysis Endpoint**
 
-- Verify all UI components are consistent and responsive.
-- Adjust typography, colors, and spacing.
-- Update README or documentation with screenshots for portfolio.
-- **Suggestion:** Make sure all interactive elements are visually clear and intuitive.
-
----
-
-## **Weeks 3-4: Backend + AI Integration (FastAPI / Node)**
+- POST `/image-analysis`
+- Accept image + optional prompt
+- Validate input
+- Return mock structured response
 
 ---
 
-### **Day 15: Backend Project Setup**
+### **Day 10 – Text Summary Endpoint**
 
-- Initialize backend project (FastAPI or Node).
-- Setup folder structure: `app/`, `routers/`, `models/`.
-- Install required dependencies.
-- Setup environment variables for API keys.
-- **Suggestion:** Plan endpoints based on frontend needs.
-
----
-
-### **Day 16: Basic API Endpoint**
-
-- Create `/generate` endpoint.
-- Accept JSON input `{ instruction, type }`.
-- Return dummy code for testing.
-- Test endpoint with Postman or similar tool.
-- **Suggestion:** Keep endpoint simple; focus on correct request/response structure.
+- POST `/text-summary`
+- Accept text + length option
+- Validate input
+- Return mock summary response
 
 ---
 
-### **Day 17: AI Integration Setup**
+### **Day 11 – Frontend → Backend (Image)**
 
-- Configure OpenAI API key.
-- Implement function to send instructions to GPT-4/5 and receive code.
-- Test simple instruction → code output.
-- Handle basic errors.
-- **Suggestion:** Keep AI calls modular for easy future adjustments.
+- Connect image analysis UI to backend
+- Handle loading + error states
+- Render mock result
 
 ---
 
-### **Day 18: AI Prompt Engineering Part 1**
+### **Day 12 – Frontend → Backend (Text)**
 
-- Design prompts for backend CRUD generation.
-- Design prompts for React component generation.
-- Test output formatting for readability.
-- **Suggestion:** Keep prompts short and specific to avoid messy outputs.
-
----
-
-### **Day 19: AI Prompt Engineering Part 2**
-
-- Design prompts for utility/helper functions.
-- Add structured output `{ code, language }`.
-- Test multi-line and complex code generation.
-- **Suggestion:** Experiment with system prompts to get cleaner code.
+- Connect text summary UI to backend
+- Handle loading + error states
+- Render mock summary
 
 ---
 
-### **Day 20: Endpoint Integration**
+### **Day 13 – Error Handling**
 
-- Connect AI function to `/generate` endpoint.
-- Return structured JSON to frontend.
-- Test multiple instructions and code types.
-- **Suggestion:** Include error handling for API failures or rate limits.
-
----
-
-### **Day 21: Optional Database Setup**
-
-- Choose DB (SQLite for MVP).
-- Create table `GeneratedCode` with fields: `id, instruction, code, type, created_at`.
-- Add endpoint to save generated code.
-- Test saving and retrieving code.
-- **Suggestion:** Use ORM for easy query management.
+- Handle invalid inputs
+- Handle backend failures
+- Display shadcn Alert components
 
 ---
 
-### **Day 22: API Testing & Refinement**
+### **Day 14 – Refactor & Stabilize**
 
-- Test endpoint with long or complex instructions.
-- Handle invalid inputs and errors.
-- Ensure consistent JSON structure.
-- **Suggestion:** Include logging for easier debugging.
-
----
-
-### **Day 23: Frontend-Backend Integration**
-
-- Connect frontend submit button to backend `/generate` endpoint.
-- Render AI response in code display component.
-- Test loading, success, and error states.
-- Test multiple code types.
-- **Suggestion:** Verify smooth transitions between loading, error, and success.
+- Clean request/response schemas
+- Remove unused code
+- Confirm full frontend ↔ backend flow
 
 ---
 
-### **Day 24: Loading & UX Enhancements**
+## 🔹 Week 3 — AI Integration
 
-- Improve loading UI (spinner or skeleton).
-- Disable submit button during AI call.
-- Display user-friendly error messages for failed API calls.
-- **Suggestion:** Consider small animations for better user feedback.
+### **Day 15 – AI Provider Setup**
 
----
-
-### **Day 25: Optional Features**
-
-- Save generated code to backend database.
-- Display previously generated code on dashboard.
-- Add filter or search by code type.
-- **Suggestion:** Keep UI simple; avoid overwhelming the user with too many previous results.
+- Add AI SDK / client
+- Load environment variables
+- Create shared AI service module
 
 ---
 
-### **Day 26: Security & Rate Limiting**
+### **Day 16 – Image Analysis (AI Logic)**
 
-- Add basic rate limiting to AI endpoint.
-- Sanitize inputs to prevent injections.
-- Handle OpenAI API errors gracefully.
-- **Suggestion:** Keep backend secure while still allowing flexible instruction input.
-
----
-
-### **Day 27: Deployment Prep**
-
-- Prepare backend for deployment (Render, Heroku, or similar).
-- Prepare frontend for deployment (Vercel).
-- Test environment variables and API keys in production setup.
-- **Suggestion:** Ensure deployment mirrors development environment for fewer surprises.
+- Send image to vision model
+- Use fixed, opinionated prompt
+- Return structured analysis
 
 ---
 
-### **Day 28: Final Testing & Polish**
+### **Day 17 – Image Analysis Integration**
 
-- Test full flow: instruction → AI → display → copy.
-- Check mobile and desktop responsiveness.
-- Fix UI/UX bugs.
-- Update README and portfolio screenshots.
-- **Suggestion:** Verify performance and responsiveness before considering the project “complete.”
+- Replace mock response
+- Ensure frontend renders AI output
+- Handle model errors
 
 ---
 
-✅ **Deliverables by end of month:**
+### **Day 18 – Text Summary (AI Logic)**
 
-- Polished frontend dashboard (Next.js + Tailwind + Shadcn).
-- Fully functional AI code generator backend endpoint.
-- Optional database for saving generated code.
-- Portfolio-ready MVP.
+- Send text to language model
+- Generate summary based on length
+- Clean and structured output
 
 ---
+
+### **Day 19 – Text Summary Integration**
+
+- Replace mock response
+- Ensure frontend renders summary
+- Handle empty or large inputs
+
+---
+
+### **Day 20 – AI Error & Cost Guards**
+
+- Add basic timeouts
+- Limit input size
+- Prevent empty requests
+
+---
+
+### **Day 21 – End-to-End Testing**
+
+- Test both features fully
+- Verify UX states
+- Fix edge cases
+
+---
+
+## 🔹 Week 4 — Plug-and-Play Conversion
+
+### **Day 22 – Component Refactor**
+
+- Convert pages into:
+
+  - `<ImageAnalysis />`
+  - `<TextSummary />`
+
+- Extract logic into hooks
+
+---
+
+### **Day 23 – Component APIs**
+
+- Add props:
+
+  - defaultPrompt
+  - onResult
+  - disabled
+
+- Ensure components are reusable
+
+---
+
+### **Day 24 – Backend Refactor**
+
+- Organize backend by feature
+- Centralize AI provider logic
+- Add simple config file
+
+---
+
+### **Day 25 – Demo Pages**
+
+- Create demo pages using components
+- Ensure zero duplication
+- Polish UI
+
+---
+
+### **Day 26 – Documentation**
+
+- Write main README
+- Add feature-level docs
+- Document env vars and setup
+
+---
+
+### **Day 27 – Final Cleanup**
+
+- Remove dead code
+- Improve naming
+- Final UX polish
+
+---
+
+### **Day 28 – Final Review**
+
+- Full walkthrough
+- README review
+- Prep for portfolio / demo
